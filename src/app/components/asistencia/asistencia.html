@@ -1,0 +1,48 @@
+<div class="asistencia-container" *ngIf="alumna">
+
+    <h1>Registro de Asistencia</h1>
+
+    <!-- ==========================================
+         DATOS DE LA ALUMNA
+         ========================================== -->
+    <div class="datos-alumna">
+        <p>
+            <strong>Nombre:</strong>
+            <span>{{ alumna.nombre }}</span>
+        </p>
+        <p>
+            <strong>Matrícula:</strong>
+            <span>{{ alumna.id }}</span>
+        </p>
+        <p>
+            <strong>Grado:</strong>
+            <span>{{ alumna.grado }}</span>
+        </p>
+        <p>
+            <strong>Grupo:</strong>
+            <span>{{ alumna.grupo }}</span>
+        </p>
+    </div>
+
+    <!-- ==========================================
+         REGISTRAR HORA DE ENTRADA Y SALIDA
+         ========================================== -->
+    <div class="datos-consulta">
+        <div class="titulo-datos">
+            <span>✓</span> Registra tu visita
+        </div>
+
+        <label for="horaEntradaAlumna">Hora de entrada</label>
+        <input type="time" id="horaEntradaAlumna" [(ngModel)]="horaEntrada" lang="en-US">
+
+        <label for="horaSalidaAlumna">Hora de salida</label>
+        <input type="time" id="horaSalidaAlumna" [(ngModel)]="horaSalida" lang="en-US">
+
+        <button (click)="registrarVisita()" class="btn-registrar">
+            Registrar mi visita
+        </button>
+
+        <p id="mensajeVisita" class="mensaje-visita">{{ mensaje }}</p>
+    </div>
+
+</div>

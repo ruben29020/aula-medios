@@ -1,0 +1,94 @@
+<div class="docente-container">
+
+    <!-- ==========================================
+         ENCABEZADO
+         ========================================== -->
+    <div class="panel-superior">
+        <div>
+            <p class="nombre-escuela">Escuela Normal No. 3 de Toluca</p>
+            <h1>Panel del Docente</h1>
+            <p class="docente-info">
+                <strong>Docente:</strong>
+                <span class="nombre-docente-grande">{{ nombreDocente }}</span>
+            </p>
+        </div>
+        <div class="icono-panel"></div>
+    </div>
+
+    <!-- ==========================================
+         INFORMACIÓN
+         ========================================== -->
+    <div class="panel-info">
+        <div class="info-icono"></div>
+        <div>
+            <strong>Registro de visitas</strong>
+            <p>Aquí puedes consultar todos los registros de visitas almacenados en Firebase y exportarlos a Excel.</p>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         TABLA
+         ========================================== -->
+    <div class="titulo-seccion">
+        <div>
+            <h2>Visitas al Aula de Medios</h2>
+            <p>Registros almacenados en Firebase.</p>
+        </div>
+    </div>
+
+    <div class="tabla-contenedor">
+        <table>
+            <thead id="encabezadoVisitas">
+                <tr>
+                    <th>Nombre</th>
+                    <th>Matrícula</th>
+                    <th>Grado</th>
+                    <th>Grupo</th>
+                    <th>Fecha</th>
+                    <th>Entrada</th>
+                    <th>Salida</th>
+                </tr>
+            </thead>
+            <tbody id="listaVisitas">
+                <tr *ngFor="let visita of visitas">
+                    <td>{{ visita.nombre }}</td>
+                    <td>{{ visita.matricula }}</td>
+                    <td>{{ visita.grado || '-' }}</td>
+                    <td>{{ visita.grupo || '-' }}</td>
+                    <td>{{ visita.fecha }}</td>
+                    <td>{{ visita.horaEntrada || visita.entrada || '-' }}</td>
+                    <td>{{ visita.horaSalida || visita.salida || '-' }}</td>
+                </tr>
+                <tr *ngIf="visitas.length === 0">
+                    <td colspan="7" style="text-align: center;">No hay visitas registradas.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ==========================================
+         EXPORTAR
+         ========================================== -->
+    <div class="exportar-panel">
+        <div class="exportar-texto">
+            <div class="excel-icono"></div>
+            <div>
+                <h3>Exportar registros</h3>
+                <p>Descarga todos los registros almacenados en Firebase en un archivo Excel.</p>
+            </div>
+        </div>
+        <button class="btn-excel" (click)="exportarExcel()">
+            Descargar Excel
+        </button>
+    </div>
+
+    <!-- ==========================================
+         REGISTRAR VISITA
+         ========================================== -->
+    <button id="btnRegistrarVisitaDocente" class="btn-registrar" (click)="registrarVisitaMaestro()">
+        Registrar tu visita
+    </button>
+
+    <p id="mensajeVisita" class="mensaje-visita">{{ mensajeVisita }}</p>
+
+</div>

@@ -1,0 +1,151 @@
+<div class="contenedor-principal">
+
+    <!-- ==========================================
+         LOGIN ALUMNAS Y DOCENTES
+         ========================================== -->
+    <div class="login-container" id="loginContainer">
+
+        <div class="logo">
+            <img src="images/logo-normal3.png" alt="Logo Escuela Normal No. 3 de Toluca">
+        </div>
+
+        <p class="escuela">Escuela Normal No. 3 de Toluca</p>
+
+        <h1>Bienvenid@ al Aula de Medios</h1>
+
+        <p class="subtitulo principal">Registra Tu Visita Usando Tu Matrícula</p>
+
+        <div class="separador"></div>
+
+        <label for="buscarAlumna">Escribe tu nombre empezando por apellidos</label>
+        <input type="text" id="buscarAlumna" autocomplete="off" 
+               [(ngModel)]="textoBusqueda" (input)="buscarAlumnaNombre($event)">
+
+        <!-- LISTA DE RESULTADOS -->
+        <div id="listaResultados" class="lista-resultados" *ngIf="listaResultados.length > 0">
+            <div class="resultado-alumna" *ngFor="let alumna of listaResultados" (click)="seleccionarAlumna(alumna)">
+                {{ alumna.nombre }}
+                <small>{{ alumna.grado }} - Grupo {{ alumna.grupo }}</small>
+            </div>
+        </div>
+
+        <div class="separador-chico"></div>
+
+        <label for="MatriculaLogin">O ingresa tu matrícula</label>
+        <input type="text" id="MatriculaLogin" autocomplete="off" [(ngModel)]="matricula">
+
+        <button (click)="consultar()" class="btn-principal" [disabled]="cargando">
+            Consultar
+        </button>
+
+        <p id="mensajeLogin" class="mensaje-login">{{ mensaje }}</p>
+
+        <!-- DATOS ENCONTRADOS -->
+        <div id="datosAlumna" class="datos-consulta" *ngIf="datosEncontrados">
+
+            <div class="titulo-datos">
+                <span>✓</span> Datos encontrados
+            </div>
+
+            <div class="dato-consulta">
+                <span>Nombre</span>
+                <strong>{{ datosEncontrados.nombre }}</strong>
+            </div>
+
+            <div class="dato-consulta">
+                <span>Matrícula</span>
+                <strong>{{ datosEncontrados.id }}</strong>
+            </div>
+
+            <!-- FILA GRADO (solo si es alumna) -->
+            <div class="dato-consulta" *ngIf="tipoUsuario === 'alumna'">
+                <span>Grado</span>
+                <strong>{{ datosEncontrados.grado }}</strong>
+            </div>
+
+            <!-- FILA GRUPO (solo si es alumna) -->
+            <div class="dato-consulta" *ngIf="tipoUsuario === 'alumna'">
+                <span>Grupo</span>
+                <strong>{{ datosEncontrados.grupo }}</strong>
+            </div>
+
+            <!-- BOTÓN CONTINUAR (ALUMNA) -->
+            <button *ngIf="tipoUsuario === 'alumna'" (click)="continuarAsistencia()" class="btn-registrar">
+                Continuar
+            </button>
+
+            <!-- BOTÓN REGISTRAR VISITA (MAESTRO NO AUTORIZADO) -->
+            <button *ngIf="tipoUsuario === 'maestro'" (click)="registrarVisitaMaestro()" class="btn-registrar">
+                Registrar tu visita
+            </button>
+
+            <p id="mensajeVisita" class="mensaje-visita">{{ mensajeVisita }}</p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==========================================
+         APARTAR SALA
+         ========================================== -->
+    <div class="login-container apartar-container" id="apartarContainer">
+
+        <div class="logo">
+            <img src="images/logo-normal3.png" alt="Logo Escuela Normal No. 3 de Toluca">
+        </div>
+
+        <p class="escuela">Escuela Normal No. 3 de Toluca</p>
+
+        <h1>Apartar Sala</h1>
+
+        <p class="subtitulo principal">Ingresa tu matrícula</p>
+
+        <div class="separador"></div>
+
+        <label for="MatriculaApartar">Ingresa tu matrícula</label>
+        <input type="text" id="MatriculaApartar" autocomplete="off" [(ngModel)]="matriculaApartar">
+
+        <button (click)="consultarMaestroApartar()" class="btn-principal">
+            Consultar
+        </button>
+
+        <p id="mensajeApartarLogin" class="mensaje-login">{{ mensajeApartarLogin }}</p>
+
+        <!-- DATOS DEL MAESTRO + FECHA Y HORAS -->
+        <div id="datosMaestroApartar" class="datos-consulta" *ngIf="datosMaestroApartar">
+
+            <div class="titulo-datos">
+                <span>✓</span> Datos encontrados
+            </div>
+
+            <div class="dato-consulta">
+                <span>Nombre</span>
+                <strong>{{ datosMaestroApartar.nombre }}</strong>
+            </div>
+
+            <div class="dato-consulta">
+                <span>Matrícula</span>
+                <strong>{{ datosMaestroApartar.id }}</strong>
+            </div>
+
+            <label for="fechaApartar">Fecha</label>
+            <input type="date" id="fechaApartar" [(ngModel)]="fechaApartar">
+
+            <label for="horaEntradaApartar">Hora de entrada</label>
+            <input type="time" id="horaEntradaApartar" [(ngModel)]="horaEntradaApartar" lang="en-US">
+
+            <label for="horaSalidaApartar">Hora de salida</label>
+            <input type="time" id="horaSalidaApartar" [(ngModel)]="horaSalidaApartar" lang="en-US">
+
+            <button (click)="apartarSala()" class="btn-registrar" [disabled]="cargandoApartar">
+                {{ cargandoApartar ? 'Registrando...' : 'Apartar Sala' }}
+            </button>
+
+            <p id="mensajeApartar" class="mensaje-visita">{{ mensajeApartar }}</p>
+
+        </div>
+
+    </div>
+
+</div>

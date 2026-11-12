@@ -1,0 +1,536 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: "Inter", "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+    
+    background: #f1f5f9; 
+    background-image: radial-gradient(circle at 50% 0%, #ffffff 0%, #e2e8f0 100%);
+    
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* =========================================
+   CONTENEDOR PRINCIPAL
+   ========================================= */
+.contenedor-principal {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 900px;
+    padding: 20px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    animation: aparecer 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =========================================
+   TARJETAS COMPACTAS
+   ========================================= */
+.login-container,
+.register-container {
+    width: 410px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.85) 0%, rgba(224, 242, 254, 0.8) 100%);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    padding: 32px 28px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-top: 1px solid #ffffff;
+    border-left: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow:
+        0 10px 30px -5px rgba(8, 145, 178, 0.15),
+        0 20px 50px -10px rgba(15, 23, 42, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+    animation: aparecer 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.login-container::after,
+.register-container::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0) 100%);
+    transform: rotate(30deg);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.login-container:hover,
+.register-container:hover {
+    transform: translateY(-5px);
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(207, 250, 254, 0.9) 100%);
+    border-color: rgba(34, 211, 238, 0.5);
+    box-shadow:
+        0 15px 35px -5px rgba(8, 145, 178, 0.25),
+        0 30px 60px -15px rgba(15, 23, 42, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 1);
+}
+
+.login-container::before,
+.register-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #06b6d4, #22d3ee, #06b6d4);
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(34, 211, 238, 0.4);
+}
+
+.login-container > *,
+.register-container > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* =========================================
+   TEXTOS Y LOGO
+   ========================================= */
+.escuela {
+    text-align: center;
+    color: #64748b;
+    font-family: "Inter", sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    margin: 2px 0;
+}
+
+h1 {
+    text-align: center;
+    font-family: "Poppins", sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 4px 0 0;
+    color: #0f172a; 
+    letter-spacing: -0.5px;
+    line-height: 1.2;
+}
+
+.subtitulo {
+    text-align: center;
+    color: #475569;
+    margin: 0 0 8px;
+    font-size: 13px;
+}
+
+.subtitulo.principal {
+    font-size: 16px;
+    font-weight: 700; 
+    color: #0891b2; 
+    margin: 10px 0 8px;
+    letter-spacing: -0.2px;
+}
+
+label {
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    color: #0891b2; 
+    margin-top: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.separador {
+    width: 40px; 
+    height: 3px;
+    margin: 8px auto 12px;
+    border-radius: 4px;
+    background: #22d3ee; 
+    box-shadow: 0 2px 8px rgba(34, 211, 238, 0.3);
+}
+
+.separador-chico {
+    width: 100%;
+    height: 1px;
+    margin: 10px 0 6px;
+    background: rgba(8, 145, 178, 0.2);
+}
+
+/* =========================================
+   INPUTS
+   ========================================= */
+input,
+select {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: #0f172a; 
+    outline: none;
+    background: #ffffff; 
+    transition: all 0.25s ease;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.02);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230891b2' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    background-size: 14px;
+    padding-right: 35px;
+}
+
+input[type="text"] {
+    background-image: none;
+    padding-right: 14px;
+}
+
+input::placeholder {
+    color: #94a3b8;
+    font-weight: 400;
+}
+
+input:focus,
+select:focus {
+    border-color: #06b6d4;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.15);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(0.4);
+    cursor: pointer;
+}
+
+.logo {
+    width: 75px;
+    height: 75px;
+    margin: 0 auto 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 6px 20px rgba(8, 145, 178, 0.15);
+    overflow: hidden;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 6px;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 12px;
+    background: #06b6d4; 
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(6, 182, 212, 0.3);
+}
+
+button:hover:not(:disabled) {
+    background: #0891b2;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(6, 182, 212, 0.4);
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn-principal { margin-top: 6px; }
+.btn-registrar { background: #10b981; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3); }
+.btn-registrar:hover:not(:disabled) { background: #059669; box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4); }
+
+/* =========================================
+   LISTA DE RESULTADOS
+   ========================================= */
+.lista-resultados {
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    background: #ffffff;
+    margin-top: 5px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    animation: aparecer 0.2s ease;
+    position: relative;
+    z-index: 10;
+}
+
+.resultado-alumna {
+    padding: 12px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f1f5f9;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    transition: background 0.2s;
+}
+
+.resultado-alumna:hover { background: #f0f9ff; color: #0891b2; }
+
+.resultado-alumna small {
+    display: block;
+    color: #64748b;
+    font-size: 12px;
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+/* =========================================
+   DATOS ENCONTRADOS
+   ========================================= */
+.datos-consulta {
+    margin-top: 10px;
+    padding: 16px;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid rgba(34, 211, 238, 0.3);
+    animation: aparecer 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: inset 0 2px 6px rgba(0,0,0,0.02);
+}
+
+.titulo-datos {
+    color: #059669;
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.titulo-datos::before {
+    content: "✓";
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: #059669;
+    color: white;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.dato-consulta {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid rgba(8, 145, 178, 0.15);
+}
+
+.dato-consulta:last-of-type { border-bottom: none; }
+.dato-consulta span { color: #475569; font-size: 13px; font-weight: 500; }
+.dato-consulta strong { color: #0f172a; text-align: right; font-weight: 600; font-size: 13px; }
+
+.oculto { display: none !important; }
+.mensaje-login { text-align: center; font-size: 13px; color: #64748b; margin: 6px 0 0; min-height: 16px; font-weight: 500; }
+.mensaje-visita { text-align: center; font-size: 13px; font-weight: 600; margin: 8px 0 0; color: #059669; min-height: 16px; }
+
+/* =========================================
+   PANEL DOCENTE (TABLA COMPACTA Y ANCHA)
+   ========================================= */
+.docente-container {
+    width: 95%; /* Ancho casi completo */
+    max-width: 1000px; /* No deja que se estire más de 1000px */
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.95); /* Fondo más sólido para leer bien la tabla */
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px -5px rgba(8, 145, 178, 0.15);
+    position: relative;
+    z-index: 2;
+    animation: aparecer 0.8s ease;
+    overflow: hidden;
+}
+
+.docente-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #06b6d4, #22d3ee, #06b6d4);
+    box-shadow: 0 2px 10px rgba(34, 211, 238, 0.4);
+}
+
+.panel-superior {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(8, 145, 178, 0.2);
+    margin-bottom: 15px;
+}
+
+.panel-superior h1 { text-align: left; margin-top: 5px; font-size: 22px; color: #0f172a; }
+.nombre-escuela { color: #64748b; font-weight: 700; font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; margin: 0; }
+.docente-info { color: #64748b; margin-bottom: 0; margin-top: 5px; font-size: 14px; }
+.nombre-docente-grande { font-family: "Poppins", sans-serif; font-size: 18px; font-weight: 700; color: #0891b2; display: inline-block; margin-left: 6px; }
+
+.panel-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 15px 0;
+    padding: 12px 16px;
+    border-radius: 12px;
+    background: #f0f9ff;
+    border: 1px solid #bae6fd;
+}
+
+.panel-info strong { color: #0f172a; font-size: 14px; font-weight: 700; }
+.panel-info p { margin: 2px 0 0; color: #475569; font-size: 13px; }
+
+.titulo-seccion { margin-top: 15px; }
+.titulo-seccion h2 { color: #0f172a; margin-bottom: 2px; font-size: 18px; font-weight: 700; }
+.titulo-seccion p { color: #64748b; margin-top: 0; font-size: 13px; }
+
+/* TABLA ULTRA COMPACTA */
+.tabla-contenedor {
+    overflow-x: auto;
+    margin-top: 10px;
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    width: 100%;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* <--- ESTO ES LA CLAVE: Fuerza a que quepan todas las columnas */
+}
+
+th, td {
+    padding: 8px 4px; /* Mínimo espacio interno */
+    text-align: center;
+    font-size: 12px; /* Letra pequeña */
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+th {
+    background: #f8fafc;
+    color: #0891b2;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: sticky;
+    top: 0;
+}
+
+td { color: #334155; font-weight: 500; }
+
+/* Repartir el ancho de las columnas */
+th:nth-child(1), td:nth-child(1) { width: 25%; } /* Nombre */
+th:nth-child(2), td:nth-child(2) { width: 15%; } /* Matrícula */
+th:nth-child(3), td:nth-child(3) { width: 8%; }  /* Grado */
+th:nth-child(4), td:nth-child(4) { width: 8%; }  /* Grupo */
+th:nth-child(5), td:nth-child(5) { width: 15%; } /* Fecha */
+th:nth-child(6), td:nth-child(6) { width: 14.5%; } /* Entrada */
+th:nth-child(7), td:nth-child(7) { width: 14.5%; } /* Salida */
+
+.tabla-contenedor tbody tr:hover { background: #f0f9ff; }
+
+/* PANEL EXPORTAR */
+.exportar-panel {
+    margin-top: 20px;
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.2);
+}
+
+.exportar-texto { display: flex; align-items: center; gap: 12px; }
+.excel-icono { width: 40px; height: 40px; border-radius: 10px; display: flex; justify-content: center; align-items: center; font-size: 20px; background: #10b981; color: white; }
+.exportar-texto h3 { margin: 0; color: #065f46; font-size: 14px; font-weight: 700; }
+.exportar-texto p { margin: 2px 0 0; color: #047857; font-size: 12px; }
+
+.btn-excel {
+    width: auto;
+    min-width: 150px;
+    padding: 10px 16px;
+    font-size: 13px;
+    margin: 0;
+    background: #10b981;
+    box-shadow: none;
+}
+
+.btn-excel:hover:not(:disabled) { background: #059669; box-shadow: none; }
+
+.btn-salir {
+    width: 200px;
+    margin: 20px auto 0;
+    display: block;
+    padding: 10px;
+    font-size: 14px;
+    background: #ef4444;
+    box-shadow: none;
+}
+
+.btn-salir:hover:not(:disabled) { background: #dc2626; box-shadow: none; }
