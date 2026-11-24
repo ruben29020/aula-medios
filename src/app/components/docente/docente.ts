@@ -15,6 +15,10 @@ export class Docente implements OnInit {
   nombreDocente: string = '';
   visitas: any[] = [];
   mensajeVisita: string = '';
+  
+  // Variable para controlar la visibilidad de la tabla. 
+  // Al estar en false, la tabla no se renderiza en el HTML.
+  mostrarTablaVisitas: boolean = false;
 
   private firebaseService = inject(FirebaseService);
   private router = inject(Router);
