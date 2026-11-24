@@ -27,16 +27,16 @@
     </div>
 
     <!-- ==========================================
-         TABLA (OCULTA)
+         TABLA (OCULTA CON NGIF)
          ========================================== -->
-    <div class="titulo-seccion" hidden>
+    <div class="titulo-seccion" *ngIf="mostrarTablaVisitas">
         <div>
             <h2>Visitas al Aula de Medios</h2>
             <p>Registros almacenados en Firebase.</p>
         </div>
     </div>
 
-    <div class="tabla-contenedor" hidden>
+    <div class="tabla-contenedor" *ngIf="mostrarTablaVisitas">
         <table>
             <thead id="encabezadoVisitas">
                 <tr>
